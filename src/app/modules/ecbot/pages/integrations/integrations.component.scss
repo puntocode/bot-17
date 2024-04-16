@@ -1,0 +1,23 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../assets/fonts/styles.css';
+
+.modal-header{
+  color: $primary;
+  border: none;
+  padding: .5rem;
+
+  .modal-primary{
+    background-color: $primaryLight;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: .3rem;
+    align-items: center;
+  }
+
+  .modal-title{
+    font-weight: 500;
+    .title{ margin-left: .5rem; vertical-align: .2rem;}
+  }
+}

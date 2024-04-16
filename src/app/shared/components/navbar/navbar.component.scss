@@ -1,0 +1,75 @@
+@import '../../../../assets/scss/variables';
+
+.navbar-detached{
+  box-shadow: $shadow;
+}
+
+.layout-navbar{
+    width: calc(100% - 1.625rem * 2);
+    margin: 0.75rem auto 0;
+    border-radius: 0.375rem;
+    padding: 0 1.5rem;
+    background-color: #fff;
+
+    .navbar-nav-right {
+      display: flex;
+      justify-content: space-between;
+      padding: .75rem 0;
+
+      .title{
+        display: flex;
+        align-items: center;
+      }
+
+      .title h2{
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.5rem;
+        color: $primary;
+        margin: 0;
+      }
+
+      .title i{
+        color: $primary;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .drop-menu{
+        border: none;
+        box-shadow: $shadow;
+        margin-top: .5rem !important;
+      }
+
+      .avatar{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        cursor: pointer;
+
+        .img-avatar{
+          width: 2.5rem;
+          height: 2.5rem;
+          border-radius: 50%;
+        }
+
+        .name{
+          display: flex;
+          flex-direction: column;
+
+          .user{
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.3rem;
+          }
+
+          .role{
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: $textGray;
+          }
+        }
+
+      }
+    }
+}

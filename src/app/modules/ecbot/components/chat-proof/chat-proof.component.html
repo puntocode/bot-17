@@ -1,0 +1,34 @@
+
+<div class="form-group col-12 mb-3">
+  <label for="ask">Respuesta</label>
+  <div class="chat" #chatContainer>
+    @for (chat of chats; track $index) {
+      <div class="d-flex flex-row p-3" [class.justify-content-end]="chat.user == 'bot'">
+        <img [appImgChat]="chat.user" width="30" height="30" [alt]="chat.user" class="me-1">
+        <div class="ml-2 p-3" [ngClass]="chat.user == 'bot' ? 'message' : 'bg-white'">{{chat.message}}</div>
+      </div>
+    }
+    <!-- <div class="d-flex flex-row p-3 justify-content-end">
+      <div class="bg-white mr-2 p-3">
+        <span class="text-muted">Hello and thankyou for visiting birdlynind.</span>
+        <br><small class="text-end">10:00hs</small>
+      </div>
+      <img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7.png" width="30" height="30">
+    </div> -->
+  </div>
+</div>
+
+<div class="form-group col-12 mb-3">
+  <div class="input-with-icon">
+    <input
+      class="form-control"
+      name="send"
+      placeholder="Inicia la conversación aquí"
+      [(ngModel)]="message"
+      (keyup.enter)="sendMessage()">
+        <i class="bx bx-send icon"
+          [ngClass]="iconClass"
+          (click)="sendMessage()">
+        </i>
+  </div>
+</div>

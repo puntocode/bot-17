@@ -1,0 +1,47 @@
+<app-loader [loading]="isLoaded"></app-loader>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre y Apellido</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rol</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track $index) {
+      <tr>
+        <td>{{ user.name }} {{ user.apellido }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span class="badge rounded-pill bg-primary">{{ user.role }}</span>
+        </td>
+        <td class="actions">
+          <a class="font-link" [routerLink]="['/ecbot/usuarios/editar', user.id]">
+            <i class="bx bx-edit-alt"></i> Editar
+          </a>
+          <app-table-btn-delete
+            [row]="user"
+            (emitDelete)="deleteUser($event)">
+          </app-table-btn-delete>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between">
+  <span class="font-h6">Total {{ page.total }}</span>
+
+  @if(page.total){
+    <div class="d-flex align-items-center">
+      <app-select-size (changeSize)="changeSize($event)"></app-select-size>
+
+      <app-pagination
+       [page]="page"
+       (changePage)="getUsers($event)">
+      </app-pagination>
+    </div>
+  }
+</div>

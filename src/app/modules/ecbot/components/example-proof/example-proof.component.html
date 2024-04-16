@@ -1,0 +1,62 @@
+
+<div class="form-group col-12 mb-3">
+  <label>Ejemplo <small>(Opcional)</small></label>
+  <i class="bx bx-spin bx-loader-alt float-end" *ngIf="isUpdating"></i>
+
+  <div class="example">
+    <div class="example__input">
+      <i class="bx bx-user me-1"></i>
+      <span>Usuario</span>
+      <input
+        name="input"
+        class="ex__input"
+        placeholder="Escribe un texto para agregar un ejemplo"
+        [(ngModel)]="example.input">
+    </div>
+
+    <hr>
+
+    <div class="example__input">
+      <i class="icon-asistente me-1"></i>
+      <span>IA</span>
+      <div class="input-with-icon w-100">
+        <input
+          name="output"
+          class="ex__input"
+          name="search"
+          placeholder="Escribe un texto para agregar un ejemplo"
+          [(ngModel)]="example.output"
+          (keyup.enter)="onSubmit()">
+          <i
+            class="bx bx-save icon"
+            [class.text-primary]="isValid"
+            (click)="onSubmit()"
+          ></i>
+      </div>
+    </div>
+
+    <hr>
+
+    <ul class="list-group list-group-flush mt-0 example__list row">
+      @for (item of examples; track $index) {
+        <li class="list-group-item mt-3 col-12">
+          <div class="list__update">
+            <i class="bx bx-edit me-1" (click)="setExample(item)"></i>
+            <i class="bx bx-trash" (click)="deleteExample(item.id)"></i>
+          </div>
+
+          <div class="example__badge">
+            <i class="bx bx-user me-1"></i>
+            <span class="user-text"><b>Usuario:</b> {{ item.input }}</span>
+          </div>
+
+          <div class="example__badge mt-1">
+            <i class="icon-asistente me-1"></i>
+            <span><b>IA:</b> {{ item.output }}</span>
+          </div>
+        </li>
+      }
+    </ul>
+
+  </div>
+</div>

@@ -1,0 +1,149 @@
+<div class="card-contend animate__animated animate__fadeIn">
+  <div class="card-body p-4">
+    <form action="" class="row" (ngSubmit)="onSubmit()">
+      <div class="col-md-6">
+
+        <!-- Field name -->
+        <div class="form-group mb-3">
+          <app-label label="Nombre" [load]="isUploading"></app-label><br>
+          <small [ngClass]="{'placeholder': isUploading }">
+            ¿Cómo quieres llamar a tu asistente?
+          </small>
+          <input
+            name="name"
+            class="form-control"
+            [(ngModel)]="agentForm.name"
+            [ngClass]="{'placeholder': isUploading }" />
+        </div>
+
+        <!-- Field typeId -->
+        <div class="form-group mb-3">
+          <app-label label="Perfil" [load]="isUploading"></app-label><br>
+          <small [ngClass]="{'placeholder': isUploading }">
+            ¿Para qué lo queres usar?
+          </small>
+          @if(isUploading){
+            <app-input-placeholder></app-input-placeholder>
+          }@else{
+            <ng-select
+              name="typeId"
+              [placeholder]="'-- Selecciona un Perfil --'"
+              [(ngModel)]="agentForm.typeId">
+                @for (item of agentTypes; track item.id) {
+                  <ng-option [value]="item.id"> {{ item.type }} </ng-option>
+                }
+            </ng-select>
+          }
+        </div>
+
+        <!-- Field tone -->
+        <div class="form-group mb-3">
+          <app-label label="Tono" [load]="isUploading"></app-label><br>
+          <small [ngClass]="{'placeholder': isUploading }">
+            ¿Qué tipo de personalidad quieres que la asistente use?
+          </small>
+          @if(isUploading){
+            <app-input-placeholder></app-input-placeholder>
+          }@else{
+            <ng-select
+              name="personalityId"
+              [placeholder]="'-- Selecciona una empresa --'"
+              [(ngModel)]="agentForm.personalityId">
+                @for (item of agentPersonalities; track item.id) {
+                  <ng-option [value]="item.id"> {{ item.personality }} </ng-option>
+                }
+            </ng-select>
+          }
+        </div>
+
+        <!-- Field companyId -->
+        <div class="form-group mb-3">
+          <app-label label="Empresa" [load]="isUploading"></app-label><br>
+          <small [ngClass]="{'placeholder': isUploading }">
+            ¿Con qué empresa está asociada?
+          </small>
+          @if(isUploading){
+            <app-input-placeholder></app-input-placeholder>
+          }@else{
+            <ng-select
+              name="companyId"
+              [placeholder]="'-- Selecciona una Personalidad --'"
+              [(ngModel)]="agentForm.companyId">
+                @for (item of companies; track item.id) {
+                  <ng-option [value]="item.id"> {{ item.name }} </ng-option>
+                }
+            </ng-select>
+          }
+        </div>
+      </div>
+
+      <div class="col-md-6 d-flex justify-content-center align-items-center">
+        <img
+          src="assets/images/svgs/initial-config.svg"
+          alt="img"
+          class="img-fluid mh-18">
+      </div>
+
+      <app-label label="Restricciones" [load]="isUploading"></app-label><br>
+
+      <!-- Field notToTalkAbout -->
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <small [ngClass]="{'placeholder': isUploading }">
+            De lo que no quieres que hable
+          </small>
+          <textarea
+            name="notToTalkAbout"
+            class="form-control"
+            rows="3"
+            [ngClass]="{'placeholder': isUploading }"
+            [(ngModel)]="agentForm.notToTalkAbout">
+          </textarea>
+        </div>
+      </div>
+
+      <!-- Field do not say -->
+      <div class="col-md-6">
+        <div class="form-group mb-3">
+          <small [ngClass]="{'placeholder': isUploading }">
+            Lo que no quieres que diga o mencione
+          </small>
+          <textarea
+            name="doNotSay"
+            class="form-control"
+            rows="3"
+            [ngClass]="{'placeholder': isUploading }"
+            [(ngModel)]="agentForm.doNotSay">
+          </textarea>
+        </div>
+      </div>
+
+      <!-- Fiedl additional information -->
+      <div class="col-12">
+        <div class="form-group mb-3">
+          <small [ngClass]="{'placeholder': isUploading }">
+            Información adicional
+          </small>
+          <textarea
+            name="additionalInformation"
+            class="form-control"
+            rows="3"
+            [ngClass]="{'placeholder': isUploading }"
+            [(ngModel)]="agentForm.additionalInformation">
+          </textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="col-12 d-flex gap-2 justify-content-end my-4">
+        <button type="button" class="btn btn-outline-primary mnw-12 ripple" [disabled]="isInvalid">
+          <i class="bx bxs-flask"></i> Probar
+        </button>
+        <button type="submit" class="btn btn-primary mnw-12 ripple" [disabled]="isInvalid">
+          <i class="bx" [ngClass]="isSaving ? 'bx-loader-alt bx-spin' : 'bx-plus-circle'"></i>
+          {{ isSaving ? 'Guardando...' : 'Guardar' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="card animate__animated animate__fadeIn">
+  <div class="card-body row p-4">
+
+    <div class="col-md-7 placeholder-glow">
+      <form class="row" autocomplete="off" (submit)="onSubmit()">
+        <!-- Field Name -->
+        <div class="col-md-6 form-group mb-2">
+          <app-label label="Nombre" [load]="isUploading"></app-label>
+          <input
+            name="nombre"
+            class="form-control"
+            [(ngModel)]="userForm.nombre"
+            [ngClass]="{'placeholder': isUploading }">
+        </div>
+
+        <!-- Field Apellido -->
+        <div class="col-md-6 form-group mb-2">
+          <app-label label="Apellido" [load]="isUploading"></app-label>
+          <input
+            name="apellido"
+            class="form-control"
+            [(ngModel)]="userForm.apellido"
+            [ngClass]="{'placeholder': isUploading }">
+        </div>
+
+        <!-- Field Email -->
+        <div class="col-md-12 form-group mb-2">
+          <app-label label="Email" [load]="isUploading"></app-label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="userForm.email"
+            [ngClass]="{'placeholder': isUploading }">
+        </div>
+
+        <!-- Field Password -->
+        @if (!userForm.id) {
+          <div class="col-md-12 form-group mb-2">
+            <app-label label="Contraseña" [load]="isUploading"></app-label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="userForm.password"
+              [ngClass]="{'placeholder': isUploading }">
+            <small class="font-sm" *ngIf="!userForm.id">
+              La contraseña debe tener al menos 8 caracteres.
+            </small>
+          </div>
+        }
+
+        <!-- Field Role -->
+        <div class="col-md-12 form-group mb-2">
+          <app-label label="Rol" [load]="isUploading"></app-label>
+          @if(isUploading){
+            <input class="form-control placeholder">
+          }@else{
+            <ng-select
+              name="role"
+              [(ngModel)]="userForm.rolId"
+              [placeholder]="'-- Seleccione un Rol --'">
+                <ng-option *ngFor="let item of roles" [value]="item.id">
+                  {{ item.role }}
+                </ng-option>
+            </ng-select>
+          }
+        </div>
+
+
+        <div class="col-12 mt-3">
+          <button
+            type="submit"
+            class="btn btn-primary me-2 px-5 mnw-12"
+            [disabled]="isInvalid"
+            [ngClass]="{'placeholder': isUploading}">
+             {{ isSaving ? 'Guardando...' : titleBtn }}
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary px-5 mnw-12"
+            routerLink="/ecbot/usuarios">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-5">
+      <img src="../../../../../assets/images/svgs/users.svg" alt="user" class="img-fluid">
+    </div>
+
+  </div>
+</div>

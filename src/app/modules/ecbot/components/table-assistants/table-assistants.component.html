@@ -1,0 +1,60 @@
+<app-loader [loading]="isLoaded"></app-loader>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Agente</th>
+      <th scope="col">Perfil</th>
+      <th scope="col">Tono</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Última Actualización</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (assistant of agents; track $index) {
+    <tr>
+      <td>{{ assistant.name | uppercase }}</td>
+      <td>{{ assistant.type?.type }}</td>
+      <td>{{ assistant.personality?.personality }}</td>
+      <td>Usuario</td>
+      <td>
+        <span
+          class="badge rounded-pill"
+          [ngClass]="assistant.state?.state == 'Activo' ? 'bg-success' : 'bg-danger'">
+            {{ assistant.state?.state }}
+        </span>
+      </td>
+      <td>{{ assistant.updatedAt | date }}</td>
+      <td class="actions">
+        <a class="font-link"> <i class="bx bxs-flask"></i> Probar </a>
+        <a class="font-link">
+          <i class="bx bx-message-alt-error"></i> Detalle
+        </a>
+        <a class="font-link" [routerLink]="['/ecbot/editar-agente', assistant.id]">
+          <i class="bx bxs-edit-alt"></i> Editar
+        </a>
+        <app-table-btn-delete
+          [row]="assistant"
+          (emitDelete)="deleteAssistants($event)">
+        </app-table-btn-delete>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between">
+  <span class="font-h6">Total {{ page.total }}</span>
+
+  @if(page.total){
+  <div class="d-flex align-items-center">
+    <app-select-size (changeSize)="changeSize($event)"></app-select-size>
+    <app-pagination
+      [page]="page"
+      (changePage)="getAssistants($event)"
+    ></app-pagination>
+  </div>
+  }
+</div>

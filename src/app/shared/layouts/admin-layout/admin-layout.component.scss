@@ -1,0 +1,36 @@
+.layout-container{
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+}
+
+.layout-page{
+  padding-left: 17rem;
+  flex-basis: 100%;
+  flex-direction: column;
+  transition: padding-left .5s ease;
+
+  &.close{
+    padding-left: 6rem;
+  }
+}
+
+//  icono de menu para cerrar y abrir el sidebar----------------
+.icon-menu {
+  position: fixed;
+  top: 1rem;
+  font-size: 1.5rem;
+  left: 15rem;
+  background: #fff;
+  border-radius: 50%;
+  padding: 0 .2rem;
+  height: 2rem;
+  z-index: 250;
+  transition: left .5s ease;
+
+  &.close{
+    left: 4rem;
+  }
+}
+

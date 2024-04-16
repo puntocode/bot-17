@@ -1,0 +1,20 @@
+<div class="card-contend animate__animated animate__fadeIn">
+  <div class="card-body p-4">
+    <div class="row">
+      <h3>Listado de Usuarios</h3>
+
+      <div class="col-md-6">
+        <app-input-search (onSearch)="searchUsers($event)"></app-input-search>
+      </div>
+
+      <div class="col-md-6 text-end">
+        <a class="btn btn-primary ripple mnw-12 ms-2" [routerLink]="'nuevo'">
+          <i class="bx bx-plus-circle"></i> Nuevo Usuario
+        </a>
+      </div>
+
+      <div class="col-12 mt-4 loader-container">
+        <app-table-users></app-table-users>
+      </div>
+    </div>
+  </div>

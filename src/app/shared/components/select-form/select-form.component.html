@@ -1,0 +1,11 @@
+<ng-select
+  [name]="name"
+  [placeholder]="title"
+  [(ngModel)]="model"
+  (change)="changeSelect($event)">
+  @for (item of data; track $index) {
+    <ng-option [value]="item.id">
+      {{ item.name }}
+    </ng-option>
+  }
+</ng-select>

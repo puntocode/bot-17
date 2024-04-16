@@ -1,0 +1,68 @@
+@import '../../../../../assets/fonts/styles.css';
+@import '../../../../../assets/scss/variables';
+
+.example{
+  border: 1px solid #ccc;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  font-size: 14px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 240px;
+
+  hr{ margin: 0;}
+
+  .example__input{
+    display: flex;
+    align-items: center;
+    span{
+      min-width: 3.5rem;
+    }
+
+    .ex__input{
+      width: 100%;
+      margin-left: 1rem;
+      border: none;
+      padding: .5rem;
+
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+
+  .example__list {
+    margin-top: .8rem;
+
+    .list__update{
+      position: absolute;
+      right: 1rem;
+      top: -.1rem;
+
+      .bx{
+        padding: .3rem;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      .bx-edit{
+        background-color: $primaryLight;
+        color: $primary;
+      }
+
+      .bx-trash{
+        background-color: $dangerLight;
+        color: $danger;
+      }
+    }
+
+    .example__badge{
+      background-color: #f3f5f6;
+      border-radius: .5rem;
+      color: #818282;
+      font-size: .7rem;
+      padding: .5rem;
+    }
+  }
+}
+

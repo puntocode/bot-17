@@ -1,0 +1,8 @@
+<a
+  class="font-link"
+  [class.text-danger]="row.isDeleting"
+  (click)="deleteRow(row)"
+>
+  <i class="bx" [ngClass]="row.isDeleting ? 'bx-loader-alt bx-spin' : 'bx-trash'"></i>
+  {{ row.isDeleting ? "Borrando..." : "Borrar" }}
+</a>

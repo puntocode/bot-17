@@ -1,0 +1,9 @@
+<ngb-pagination
+  size="sm"
+  (pageChange)="pageChange($event)"
+  [collectionSize]="page.total"
+  [(page)]="page.current"
+  [pageSize]="page.size"
+  [maxSize]="4"
+  [rotate]="true"
+  [boundaryLinks]="true" />

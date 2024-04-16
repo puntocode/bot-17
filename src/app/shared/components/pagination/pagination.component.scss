@@ -1,0 +1,37 @@
+/* Estilos para el enlace activo (active) */
+@import '../../../../assets/scss/variables';
+
+
+/* Estilos para el page-link */
+::ng-deep .page-link {
+  border-color: #fff;
+  color: $textGray;
+}
+
+/* Estilos para el enlace activo (active) */
+::ng-deep .page-item.active .page-link {
+  background-color: #fff;
+  color: $primary;
+  font-weight: 700;
+  border-color: #fff;
+}
+
+/* Estilos para el enlace inactivo (disabled) */
+::ng-deep .page-item.disabled .page-link {
+  background-color: #fff;
+  color: $textGrayDisabled;
+  border-color: #fff;
+}
+
+/* Estilos para el hover del enlace */
+::ng-deep .page-link:hover {
+  background-color: #fff;
+  color: $primaryHover;
+  border-color: #fff;
+}
+
+//style by click focus
+::ng-deep .page-link:focus {
+  box-shadow: none;
+  background-color: #fff;
+}

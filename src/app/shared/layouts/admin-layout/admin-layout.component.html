@@ -1,0 +1,24 @@
+<div class="layout-wrapper layout-content-navbar">
+  <div class="layout-container animate__animated animate__fadeIn">
+    <div class="icon-menu pointer" [class.close]="close">
+      <i
+        class="bx color-info"
+        [ngClass]="close ? 'bx-right-arrow-circle' : 'bx-left-arrow-circle'"
+        (click)="closeToggle()">
+      </i>
+    </div>
+
+    <app-sidebar [close]="close"></app-sidebar>
+
+    <div class="layout-page" [class.close]="close">
+      <app-navbar></app-navbar>
+
+      <!-- Tarjeta de Contenido -->
+      <div class="layout-content">
+        <app-menu></app-menu>
+        <router-outlet></router-outlet>
+      </div>
+
+    </div>
+  </div>
+</div>

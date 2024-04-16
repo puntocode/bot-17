@@ -1,0 +1,56 @@
+<div class="sidebar" [class.close]="close">
+  <!-- logo -->
+  <div class="logo-details">
+    @if (close) {
+      <img src="assets/images/svgs/favicon.svg" alt="logo" class="logo" />
+    }@else {
+      <img src="assets/images/svgs/logo.svg" alt="logo" class="logo" />
+    }
+  </div>
+
+  <hr />
+
+  <!-- Menus -->
+  <ul class="nav-links">
+    @for (item of items; track $index) {
+      <li class="nav-item">
+        <a
+          class="router"
+          routerLinkActive="active"
+          [routerLink]="'/ecbot/' + item.link"
+        >
+          <i class="icon-rectangle"></i>
+          <div class="link">
+            <i
+              [class]="item.icon"
+              placement="end"
+              [ngbTooltip]="close ? item.title : null"
+            ></i>
+            <span class="link_name">{{item.title}}</span>
+          </div>
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="profile-details">
+    <div class="nav-item">
+      <a
+        class="router"
+        routerLinkActive="active"
+        routerLink="/ecbot/configuracion-inicial"
+      >
+        <i class="icon-rectangle"></i>
+        <div class="link">
+          <i
+            class="bx bx-cog"
+            placement="end"
+            [ngbTooltip]="close ? 'Configuración' : null"
+          ></i>
+          <span class="link_name">Configuración</span>
+        </div>
+      </a>
+    </div>
+    <hr />
+  </div>
+</div>

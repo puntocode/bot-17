@@ -1,0 +1,112 @@
+<div class="card-contend animate__animated animate__fadeIn">
+  <div class="card-body p-4">
+    <div class="row">
+      <div class="col-md-6">
+        <form class="row placeholder-glow">
+
+          <!-- Field Assistant -->
+          <div class="form-group col-md-6 mb-3">
+            <app-label label="Asistente" [load]="isUploading"></app-label>
+            @if(isUploading){
+              <app-input-placeholder></app-input-placeholder>
+            }@else{
+              <app-select-form
+                name="agentId"
+                [title]="'-- Selecciona un Agente --'"
+                [data]="agents"
+                [(model)]="agentId"
+                (modelChange)="changeAgent()">
+              </app-select-form>
+            }
+          </div>
+
+          <!-- Field Type -->
+          <div class="form-group col-md-6 mb-3">
+            <app-label label="Tipo" [load]="isUploading"></app-label>
+            @if(isUploading){
+              <app-input-placeholder></app-input-placeholder>
+            }@else{
+              <app-select-form
+                name="typeId"
+                [title]="'-- Selecciona un Perfil --'"
+                [data]="agentTypes"
+                [(model)]="typeId">
+              </app-select-form>
+            }
+          </div>
+
+          <!-- Field context -->
+          <div class="form-group col-12 mb-3">
+            <app-label label="Contexto" [load]="isUploading"></app-label>
+            <i class="bx bx-spin bx-loader-alt float-end" *ngIf="isUpContext"></i>
+            @if(isUploading){
+              <app-input-placeholder [isInput]="false"></app-input-placeholder>
+            }@else{
+              <textarea
+                rows="4"
+                name="context"
+                class="form-control"
+                placeholder="Escribe el contexto aquí"
+                [(ngModel)]="context"
+                (blur)="changeContext()"
+                [disabled]="!agentId || isUpContext">
+              </textarea>
+            }
+          </div>
+
+
+          <!-- Chat -->
+          @if(isUploading){
+            <app-label label="Chat"  [load]="isUploading"></app-label>
+            <app-input-placeholder [isInput]="false"></app-input-placeholder>
+          }@else{
+            <app-chat-proof></app-chat-proof>
+          }
+
+          <div class="col-12 mt-3">
+            <button
+              type="button"
+              class="btn btn-outline-primary mnw-12 ripple me-2"
+              [ngClass]="{'placeholder': isUploading }">
+              <i class="bx bx-edit-alt"></i> Editar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mnw-12 ripple"
+            [ngClass]="{'placeholder': isUploading }">
+            <i class='bx bx-paper-plane'></i> Publicar
+          </button>
+        </div>
+
+        </form>
+      </div>
+
+
+      <div class="col-md-6 d-flex flex-column">
+
+        @if(isUploading){
+          <app-label label="Ejemplo"  [load]="isUploading"></app-label>
+          <app-input-placeholder [isInput]="false"></app-input-placeholder>
+        }@else{
+          <app-example-proof></app-example-proof>
+        }
+
+        <img
+          src="assets/images/svgs/proof.svg"
+          alt="img"
+          class="img-proof">
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-12 text-end">
+        <button type="button" class="btn btn-outline-primary mnw-12 ripple me-2">
+          <i class="bx bx-edit-alt"></i> Editar
+        </button>
+        <button type="button" class="btn btn-primary mnw-12 ripple">
+          <i class='bx bx-paper-plane'></i> Publicar
+        </button>
+      </div>
+    </div> -->
+  </div>
+</div>

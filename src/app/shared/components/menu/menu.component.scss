@@ -1,0 +1,70 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/fonts/styles.css';
+
+.menu-pane{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  border-radius: .5rem;
+  align-items: center;
+  box-shadow: $shadow;
+  text-decoration: none;
+  color: $textGray;
+  cursor: pointer;
+
+  .icon{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 50%;
+  }
+
+  .icon-blue{
+    background-color: $primaryLight;
+    color: $primary;
+  }
+
+  .icon-warning{
+    background-color: $warningLight;
+    color: $warning;
+    padding: .5rem 1rem;
+  }
+
+  .icon-success{
+    background-color: $successLight;
+    color: $success;
+  }
+
+  .icon-danger{
+    background-color: $dangerLight;
+    color: $danger;
+  }
+
+  .menu-title{
+    text-align: end;
+    font-size: 1.2rem;
+  }
+}
+
+.menu-active{
+  border: 1px solid $primary;
+  color: $primary !important;
+}
+
+.menu-back{
+  background-color: white;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+
+  a{
+    color: $primaryHover;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+  }
+}

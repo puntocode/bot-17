@@ -1,0 +1,13 @@
+@import '../../../../assets/scss/variables';
+
+.form-select{
+  margin-right: 1rem;
+  margin-bottom: .75rem;
+  font-size: .8rem;
+  background-size: 10px;
+
+  &:focus{
+    border-color: $primary;
+    box-shadow: 0 0 0 0.2rem $primaryLight;
+  }
+}

@@ -1,0 +1,50 @@
+<app-loader [loading]="isLoaded"></app-loader>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Integración</th>
+      <th scope="col">Asistente</th>
+      <th scope="col">Estado</th>
+      <th scope="col" class="text-center">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (integration of integrations; track $index) {
+      <tr>
+        <td>{{ integration.name | uppercase }}</td>
+        <td>{{ integration.agentName | titlecase }}</td>
+        <td>
+          <span
+            class="badge rounded-pill"
+            [ngClass]="integration.state == 'Activo' ? 'bg-success' : 'bg-danger'">
+              {{ integration.state }}
+          </span>
+        </td>
+        <td class="actions">
+          <a class="font-link" (click)="editIntegration(integration)">
+            <i class="bx bxs-edit-alt"></i> Editar
+          </a>
+          <app-table-btn-delete
+            [row]="integration"
+            (emitDelete)="deleteIntegrations($event)">
+          </app-table-btn-delete>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between">
+  <span class="font-h6">Total {{ page.total }}</span>
+
+  @if(page.total){
+    <div class="d-flex align-items-center">
+      <app-select-size (changeSize)="changeSize($event)"></app-select-size>
+      <app-pagination
+        [page]="page"
+        (changePage)="getIntegrations($event)"
+      ></app-pagination>
+    </div>
+  }
+</div>

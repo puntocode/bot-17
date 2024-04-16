@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*--- Colors ---*/
+$primary: #1f61de;
+$success: #13CE66;
+$danger: #FF000D;
+$warning: #FFB020;
+$info: #0c39a8;
+$secondary: #11101d;
+
+/*--- Primay ---*/
+$primaryHover: #0c39a8;
+$primaryLight: #cbdcfb;
+// $primaryDisabled: #cbdcfb;
+// $primarySmooth: #dfd6fb;
+
+/*--- Warning ---*/
+$warningHover: #ad750c;
+$warningLight: #fefdf0;
+
+/*--- success ---*/
+$successHover: #147839;
+$successLight: #c7f0d6;
+
+/*--- danger ---*/
+$dangerHover: #690d12;
+$dangerLight: #fbd0d0;
+
+$textGray: #808191;
+$textGrayDisabled: #cccfd3;
+$shadow: 0 0 0.375rem 0.25rem rgba(161, 172, 184, 0.15);

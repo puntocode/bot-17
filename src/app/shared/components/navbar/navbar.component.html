@@ -1,0 +1,40 @@
+<nav class="layout-navbar navbar-detached">
+
+
+  <div class="navbar-nav-right">
+
+    <!-- Title -->
+    <div class="title">
+      @if(back){
+        <i class='bx bx-left-arrow-alt bx-sm pointer' (click)="goRoute()"></i>
+      }
+      <h2>{{title}}</h2>
+    </div>
+
+    <!-- User -->
+    <div ngbDropdown class="d-inline-block">
+      <div class="avatar" ngbDropdownToggle>
+        <img class="img-avatar" src="assets/images/svgs/user-admin.svg" alt="user">
+        <div class="name">
+          <span class="user">Admin</span>
+          <span class="role">Administrador</span>
+        </div>
+      </div>
+      <div ngbDropdownMenu class="drop-menu">
+        <button ngbDropdownItem>
+          <i class="bx bx-user me-3"></i> Pefil
+        </button>
+        <button ngbDropdownItem>
+          <i class="bx bx-cog me-3"></i> Configuración
+        </button>
+        <button
+          ngbDropdownItem
+          class="font-danger border-top mt-3 pt-2"
+          (click)="logout()">
+            <i class="bx bx-log-out me-3"></i>Cerrar Sesión
+        </button>
+      </div>
+    </div>
+
+  </div>
+</nav>
